@@ -1,6 +1,31 @@
+#include <iostream>
+#include <cmath>
+#include "puzzle.h"
+
+using namespace std;
+
+
+
+
+
 int main() {
 
+   /* int nums[3][3] = {{1,4,3},{2,5,6},{7,8,0}};
 
+    Puzzle thePuzzle(nums);
+
+    double dist = thePuzzle.puzzleEucladian();
+
+    cout << dist << "\n";
+
+    thePuzzle.swap(8);
+
+    thePuzzle.printPuzzle();
+
+    cout << "number misplaced: " << thePuzzle.misplacedTiles() << endl;
+    */ 
+    
+    return 0;
 
 }
 
@@ -10,7 +35,6 @@ int main() {
 
 
 //puzzle and swapping, euclidian distance
-
 
 //tree, priority queue 
 
