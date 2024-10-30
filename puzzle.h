@@ -2,6 +2,8 @@
 #define __PUZZLE_H__
 
 class Puzzle{
+    friend class Node;
+    friend class Tree;
     private:
     int puzzle[3][3];
 
