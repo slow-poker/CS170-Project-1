@@ -1,10 +1,10 @@
 #include "node.h"
 
-Node::Node(Puzzle* inputPuzzle) { //calculate priority and use setter in tree
+Node::Node(int depth, Puzzle* nodePuzzle, Node* parent) { //calculate priority and use setter in tree
     priority = -1;
-    depth = -1;
-    nodePuzzle = inputPuzzle;
-    parent = nullptr;
+    this->depth = depth;
+    this->nodePuzzle = nodePuzzle;
+    this->parent = parent;
     child1 = nullptr;
     child2 = nullptr;
     child3 = nullptr;

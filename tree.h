@@ -1,12 +1,8 @@
 #ifndef __TREE_H__
 #define __TREE_H__
 #include "node.h"
-#include <vector>
 #include <queue>
 using namespace std;
-
-
-
 
 class Tree{
     private:
@@ -16,7 +12,7 @@ class Tree{
         struct lessThanByPriority { //used for tree priority queue
             bool operator()(Node const & lhs, Node const & rhs) {return lhs.priority < rhs.priority;}
         };
-        priority_queue <Node, vector<int>, lessThanByPriority> gq; 
+        priority_queue <Node, vector<int>, lessThanByPriority> nodeQueue; 
 
         bool operatorCheck(int move, int zeroRow, int zeroCol);
     public:

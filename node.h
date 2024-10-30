@@ -9,13 +9,13 @@ class Node{
         int depth;
         Puzzle* nodePuzzle;
         Node* parent;
-        Node* child1;
-        Node* child2;
-        Node* child3;
-        Node* child4;
+        Node* child1; //up
+        Node* child2; //down
+        Node* child3; //left
+        Node* child4; //right
 
     public:
-        Node(Puzzle* inputPuzzle) {nodePuzzle = inputPuzzle;} //calculate priority upon creation 
+        Node(int depth, Puzzle* nodePuzzle, Node* parent); //calculate priority upon creation 
         int getArrayLength(); //returns side length of puzzle square
 };
 
