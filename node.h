@@ -4,26 +4,19 @@
 
 class Node{
     friend class Tree;
-    friend class lessThanByPriority;
     private:
         int priority;
+        int depth;
         Puzzle* nodePuzzle;
-        Node* parent = nullptr;
-        Node* child1 = nullptr;
-        Node* child2 = nullptr;
-        Node* child3 = nullptr;
-        Node* child4 = nullptr;
-        int getArrayLength() { sizeof(nodePuzzle->puzzle) / sizeof(nodePuzzle->puzzle[0][0]);
-}
+        Node* parent;
+        Node* child1;
+        Node* child2;
+        Node* child3;
+        Node* child4;
 
     public:
-        Node(){priority = 0; nodePuzzle = nullptr;}
         Node(Puzzle* inputPuzzle) {nodePuzzle = inputPuzzle;} //calculate priority upon creation 
-        
-};
-
-struct lessThanByPriority { //used for tree priority queue
-    bool operator()(Node const & p1, Node const & p2) {return p1.priority < p2.priority;}
+        int getArrayLength(); //returns side length of puzzle square
 };
 
 #endif
