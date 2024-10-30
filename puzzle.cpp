@@ -59,11 +59,14 @@ int Puzzle::misplacedTiles(){
 
 bool Puzzle::goalPuzzle(){
 
-    if(puzzle == goal){
-         return true;
-    } else {
-        return false;
+    for(int row = 0; row < 3; row++){
+        for(int col = 0; col < 3; col++){
+            if(puzzle[row][col] != goal[row][col]){
+                return false;
+            }
+        }
     }
+    return true;
 }
 
 void Puzzle::printPuzzle(){
