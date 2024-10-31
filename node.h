@@ -7,7 +7,6 @@ class Node{
     private:
         int priority;
         int depth;
-        Puzzle* nodePuzzle;
         Node* parent;
         Node* child1; //up
         Node* child2; //down
@@ -15,8 +14,10 @@ class Node{
         Node* child4; //right
 
     public:
+        Puzzle* nodePuzzle;
         Node(int depth, Puzzle* nodePuzzle, Node* parent); //calculate priority upon creation 
         int getArrayLength(); //returns side length of puzzle square
+        
 };
 
 #endif

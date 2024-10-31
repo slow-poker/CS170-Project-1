@@ -12,7 +12,7 @@ class Tree{
         struct lessThanByPriority { //used for tree priority queue
             bool operator()(Node const & lhs, Node const & rhs) {return lhs.priority < rhs.priority;}
         };
-        priority_queue <Node, vector<int>, lessThanByPriority> nodeQueue; 
+        priority_queue<Node, vector<Node>, lessThanByPriority> nodeQueue; 
 
         bool operatorCheck(int move, int zeroRow, int zeroCol);
     public:
