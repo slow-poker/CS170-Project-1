@@ -87,7 +87,7 @@ void Tree::expandNode() { //find all possible moves from the currState node, cre
     //queue is setup with children
     //move currstate to top of queue (c++ std priority queue returns const Node so this is done using the tree)
 
-    if(currState == nodeQueue.top().self)
+    if(currState == nodeQueue.top().self);
     
 }
 
