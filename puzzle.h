@@ -7,6 +7,7 @@ class Puzzle{
     private:
     int puzzle[3][3];
 
+
     public:
     Puzzle(int[3][3]);
     void printPuzzle();

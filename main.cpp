@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 #include "puzzle.h"
+#include "tree.h"
+#include "node.h"
 
 using namespace std;
 
@@ -50,7 +52,8 @@ int main() {
         puzzleArr[2][0] = 7; puzzleArr[2][1] = 8; puzzleArr[2][2] = 0;
     }
 
-    Puzzle thePuzzle(puzzleArr);
+    Puzzle* thePuzzle = new Puzzle(puzzleArr);
+    Tree* theTree = new Tree(thePuzzle);
 
     cout << "Enter your choice of algorithm" << endl; 
     cout << "Uniform Cost Search" << endl;
@@ -60,13 +63,13 @@ int main() {
     cin >> algorithmChoice;
 
     if (algorithmChoice ==1){
-
+        theTree->explore(1);
     }
     else if(algorithmChoice == 2){
-
+        theTree->explore(2);
     }
     else if(algorithmChoice ==3){
-
+        theTree->explore(3);
     }
 
     cout << "Goal!!!" << endl << endl; 

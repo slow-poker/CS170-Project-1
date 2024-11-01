@@ -1,15 +1,22 @@
 #ifndef __TREE_H__
 #define __TREE_H__
-#include "node.h"
+#include <vector>
 #include <queue>
-using namespace std;
+#include <memory>
+#include "node.h"
+#include "puzzle.h"
+
+
 
 class Tree{
     private:
         Node* startState;
         Node* currState;
         bool operatorCheck(int move, int zeroRow, int zeroCol);
-        void Tree::destroyTree(Node* nodePtr); //helper for tree destructor
+        void destroyTree(Node* nodePtr); //helper for tree destructor
+        std::vector<Puzzle> seen;
+
+
     public:
         Tree(Puzzle *startPuzzle);
         ~Tree();
@@ -17,7 +24,10 @@ class Tree{
         struct lessThanByPriority { //used for tree priority queue
             bool operator()(Node const & lhs, Node const & rhs) {return lhs.priority < rhs.priority;}
         };
-        priority_queue<Node, vector<Node>, lessThanByPriority> nodeQueue; 
+        std::priority_queue<Node, std::vector<Node>, lessThanByPriority> nodeQueue; 
+        int explore(int);
+        bool checkIfVisited(Puzzle currPuzzle);
+
 };
 
 #endif
