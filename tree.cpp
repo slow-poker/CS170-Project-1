@@ -9,10 +9,31 @@ Tree::Tree(Puzzle *startPuzzle) {
 
 Tree::~Tree() {
     //delete tree nodes
+    destroyTree(startState);
     //set pointers to null?
+    currState = nullptr;
+    startState = nullptr;
+    
 }
 
-void Tree::expandNode() { //find all possible moves from the current node, create their puzzleNodes and add them to the priority queue
+void Tree::destroyTree(Node* nodePtr) { //put root ptr in, recursively deletes all children
+    if(nodePtr->child1 != nullptr)
+        destroyTree(nodePtr->child1);
+    if(nodePtr->child2 != nullptr)
+        destroyTree(nodePtr->child2);
+    if(nodePtr->child3 != nullptr)
+        destroyTree(nodePtr->child3);
+    if(nodePtr->child4 != nullptr)
+        destroyTree(nodePtr->child4);
+    
+    //has no children left
+    delete nodePtr;
+    nodePtr = nullptr;
+}
+
+
+
+void Tree::expandNode() { //find all possible moves from the currState node, create their puzzleNodes and add them to the priority queue
 
     //find where 0 is
     unsigned zeroCol = 0, zeroRow = 0;
@@ -64,9 +85,10 @@ void Tree::expandNode() { //find all possible moves from the current node, creat
     puzzleChild = nullptr;
 
     //queue is setup with children
-    //move currstate to top of queue
+    //move currstate to top of queue (c++ std priority queue returns const Node so this is done using the tree)
 
-    // currState = nodeQueue.top();
+    if(currState == nodeQueue.top().self)
+    
 }
 
 bool Tree::operatorCheck(int move, int zeroRow, int zeroCol) { // 1=up, 2=down, 3=left, 4=right; checks if the move is a valid state

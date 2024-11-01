@@ -12,6 +12,7 @@ class Node{
         Node* child2; //down
         Node* child3; //left
         Node* child4; //right
+        Node* self;
 
     public:
         Puzzle* nodePuzzle;
