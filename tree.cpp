@@ -1,5 +1,5 @@
 #include "tree.h"
-#include "iostream"
+#include <iostream>
 #include <memory>
 using namespace std;
 
@@ -42,7 +42,7 @@ void Tree::expandNode() { //find all possible moves from the currState node, cre
     bool earlyEnd = false;
 
     for(zeroRow = 0; zeroRow < 3; ++zeroRow) {
-        for(zeroCol = 0; zeroCol < 0; ++zeroCol) {
+        for(zeroCol = 0; zeroCol < 3; ++zeroCol) {
             if(currState->nodePuzzle->puzzle[zeroRow][zeroCol] == 0) {
                 earlyEnd = true;
                 break;
@@ -107,22 +107,22 @@ void Tree::expandNode() { //find all possible moves from the currState node, cre
 
 bool Tree::operatorCheck(int move, int zeroRow, int zeroCol) { // 1=up, 2=down, 3=left, 4=right; checks if the move is a valid state
     unsigned arrMaxIndex = currState->getArrayLength() - 1;
-    if(move = 1) { //up
+    if(move == 1) { //up
         if(zeroRow <= arrMaxIndex && zeroRow > 0)
         return true;
         else return false;
     }
-    if(move = 2) { //down
+    if(move == 2) { //down
         if(zeroRow < arrMaxIndex && zeroRow >= 0 )
         return true;
         else return false;
     }    
-    if(move = 3) { //left
+    if(move == 3) { //left
         if(zeroCol <= arrMaxIndex && zeroCol > 0)
         return true;
         else return false;
     }    
-    if(move = 4) { //right
+    if(move == 4) { //right
         if(zeroCol < arrMaxIndex && zeroCol >= 0)
         return true;
         else return false;
@@ -167,13 +167,14 @@ int Tree::explore(int algo){
        shared_ptr<Node> currState = make_shared<Node>(nodeQueue.top());
 
        nodeQueue.pop();
+        
+        expandNode();
+        
+               return 0;
+           
 
        
-               return 0;
-           /*
-
-       expandNode();
-
+        /*
 
 
 
