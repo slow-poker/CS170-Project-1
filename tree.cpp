@@ -174,7 +174,7 @@ int Tree::explore(int algo){
            
 
        
-        /*
+        
 
 
 
@@ -197,7 +197,7 @@ int Tree::explore(int algo){
                     
        }
 
-       */
+       
        
     }
 
