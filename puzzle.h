@@ -17,6 +17,7 @@ class Puzzle{
     int goal[3][3] = {{1,2,3},{4,5,6},{7,8,0}};
     void swap(int);
 
+
 };
 
 #endif

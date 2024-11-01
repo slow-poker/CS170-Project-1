@@ -47,9 +47,16 @@ int main() {
     }
     
     else if (puzzleType == 1) {
-        puzzleArr[0][0] = 1; puzzleArr[0][1] = 4; puzzleArr[0][2] = 3;
+        /*puzzleArr[0][0] = 1; puzzleArr[0][1] = 4; puzzleArr[0][2] = 3;
         puzzleArr[1][0] = 2; puzzleArr[1][1] = 5; puzzleArr[1][2] = 6;
         puzzleArr[2][0] = 7; puzzleArr[2][1] = 8; puzzleArr[2][2] = 0;
+        */
+
+        puzzleArr[0][0] = 1; puzzleArr[0][1] = 2; puzzleArr[0][2] = 3;
+        puzzleArr[1][0] = 4; puzzleArr[1][1] = 0; puzzleArr[1][2] = 6;
+        puzzleArr[2][0] = 7; puzzleArr[2][1] = 5; puzzleArr[2][2] = 8;
+        
+
     }
 
     Puzzle* thePuzzle = new Puzzle(puzzleArr);

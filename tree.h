@@ -20,9 +20,9 @@ class Tree{
     public:
         Tree(Puzzle *startPuzzle);
         ~Tree();
-        void expandNode(); //adds all possible puzzle children to priority queue, removes currState from queue, currState points to node at the top of queue
+        void expandNode(int ); //adds all possible puzzle children to priority queue, removes currState from queue, currState points to node at the top of queue
         struct lessThanByPriority { //used for tree priority queue
-            bool operator()(Node const & lhs, Node const & rhs) {return lhs.priority < rhs.priority;}
+            bool operator()(Node const & lhs, Node const & rhs) {return lhs.priority > rhs.priority;}
         };
         std::priority_queue<Node, std::vector<Node>, lessThanByPriority> nodeQueue; 
         int explore(int);

@@ -15,5 +15,11 @@ Node::Node(int depth, Puzzle* nodePuzzle, Node* parent) { //calculate priority a
     
 } 
 
+    Node::~Node(){
+        //delete nodePuzzle;
+        nodePuzzle = nullptr;
+    }
+
+
 int Node::getArrayLength() { return sizeof(nodePuzzle->puzzle) / sizeof(nodePuzzle->puzzle[0][0]); }
 
