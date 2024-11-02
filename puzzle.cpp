@@ -91,5 +91,6 @@ void Puzzle::swap(int number1){ //can add a valid funcion to check whether swap 
             }
         }
     }
+
     puzzle[tempR][tempC] = 0;
 }

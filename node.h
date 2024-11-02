@@ -18,7 +18,8 @@ class Node{
         Puzzle* nodePuzzle;
         Node(int depth, Puzzle* nodePuzzle, Node* parent); //calculate priority upon creation 
         int getArrayLength(); //returns side length of puzzle square
-        
+        bool visited;
+        ~Node();
 };
 
 #endif

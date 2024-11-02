@@ -1,6 +1,8 @@
 #include <iostream>
 #include <cmath>
 #include "puzzle.h"
+#include "tree.h"
+#include "node.h"
 
 using namespace std;
 
@@ -45,12 +47,20 @@ int main() {
     }
     
     else if (puzzleType == 1) {
-        puzzleArr[0][0] = 1; puzzleArr[0][1] = 4; puzzleArr[0][2] = 3;
+        /*puzzleArr[0][0] = 1; puzzleArr[0][1] = 4; puzzleArr[0][2] = 3;
         puzzleArr[1][0] = 2; puzzleArr[1][1] = 5; puzzleArr[1][2] = 6;
         puzzleArr[2][0] = 7; puzzleArr[2][1] = 8; puzzleArr[2][2] = 0;
+        */
+
+        puzzleArr[0][0] = 1; puzzleArr[0][1] = 2; puzzleArr[0][2] = 3;
+        puzzleArr[1][0] = 4; puzzleArr[1][1] = 0; puzzleArr[1][2] = 6;
+        puzzleArr[2][0] = 7; puzzleArr[2][1] = 5; puzzleArr[2][2] = 8;
+        
+
     }
 
-    Puzzle thePuzzle(puzzleArr);
+    Puzzle* thePuzzle = new Puzzle(puzzleArr);
+    Tree* theTree = new Tree(thePuzzle);
 
     cout << "Enter your choice of algorithm" << endl; 
     cout << "Uniform Cost Search" << endl;
@@ -59,22 +69,24 @@ int main() {
 
     cin >> algorithmChoice;
 
-    if (algorithmChoice ==1){
+    int depthOfGoal;
 
+    if (algorithmChoice ==1){
+        depthOfGoal = theTree->explore(1);
     }
     else if(algorithmChoice == 2){
-
+        depthOfGoal = theTree->explore(2);
     }
     else if(algorithmChoice ==3){
-
+        depthOfGoal = theTree->explore(3);
     }
 
     cout << "Goal!!!" << endl << endl; 
-    cout << "To solve this problem the search algorithm expanded a total of " << "insert nodes here " << " nodes."<< endl; 
+    cout << "To solve this problem the search algorithm expanded a total of " << theTree->expandedNodes() << " nodes."<< endl; 
     cout << "The maximum number of nodes in the queue at any one time: ";
-    cout << "YYY" << endl;
-    cout << "The depth of the goal node was"; 
-    cout << "ZZZ"<< endl; 
+    cout << theTree->longest() << endl;
+    cout << "The depth of the goal node was: "; 
+    cout << depthOfGoal << endl; 
 
 
     //double dist = thePuzzle.puzzleEucladian();

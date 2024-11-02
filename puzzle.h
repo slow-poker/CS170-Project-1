@@ -7,6 +7,7 @@ class Puzzle{
     private:
     int puzzle[3][3];
 
+
     public:
     Puzzle(int[3][3]);
     void printPuzzle();
@@ -15,6 +16,7 @@ class Puzzle{
     bool goalPuzzle();
     int goal[3][3] = {{1,2,3},{4,5,6},{7,8,0}};
     void swap(int);
+
 
 };
 
