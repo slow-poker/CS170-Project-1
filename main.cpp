@@ -69,22 +69,24 @@ int main() {
 
     cin >> algorithmChoice;
 
+    int depthOfGoal;
+
     if (algorithmChoice ==1){
-        theTree->explore(1);
+        depthOfGoal = theTree->explore(1);
     }
     else if(algorithmChoice == 2){
-        theTree->explore(2);
+        depthOfGoal = theTree->explore(2);
     }
     else if(algorithmChoice ==3){
-        theTree->explore(3);
+        depthOfGoal = theTree->explore(3);
     }
 
     cout << "Goal!!!" << endl << endl; 
-    cout << "To solve this problem the search algorithm expanded a total of " << "insert nodes here " << " nodes."<< endl; 
+    cout << "To solve this problem the search algorithm expanded a total of " << theTree->expandedNodes() << " nodes."<< endl; 
     cout << "The maximum number of nodes in the queue at any one time: ";
-    cout << "YYY" << endl;
-    cout << "The depth of the goal node was"; 
-    cout << "ZZZ"<< endl; 
+    cout << theTree->longest() << endl;
+    cout << "The depth of the goal node was: "; 
+    cout << depthOfGoal << endl; 
 
 
     //double dist = thePuzzle.puzzleEucladian();

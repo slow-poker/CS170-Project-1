@@ -17,6 +17,7 @@ Tree::~Tree() {
     delete startState;
     currState = nullptr;
     startState = nullptr;
+    longestQueue = 1;
 }
 
 void Tree::destroyTree(Node* nodePtr) { //put root ptr in, recursively deletes all children
@@ -38,6 +39,8 @@ void Tree::destroyTree(Node* nodePtr) { //put root ptr in, recursively deletes a
 
 void Tree::expandNode(int algo) { //find all possible moves from the currState node, create their puzzleNodes and add them to the priority queue
 
+    expanded++;
+    longestQueue--;
     //find where 0 is
     unsigned zeroCol = 0, zeroRow = 0;
     bool earlyEnd = false;
@@ -71,7 +74,7 @@ void Tree::expandNode(int algo) { //find all possible moves from the currState n
                 else if (move == 2) currState->child2 = puzzleChild;
                 else if (move == 3) currState->child3 = puzzleChild;
                 else if (move == 4) currState->child4 = puzzleChild;
-
+                longestQueue++;
             }
         }
    }
@@ -89,15 +92,16 @@ void Tree::expandNode(int algo) { //find all possible moves from the currState n
                 } else if (algo == 3) {
                     child->priority = child->nodePuzzle->puzzleEucladian() + child->depth;
                 }
-                cout << "Child priorirty " << child->priority << endl;
+                /*cout << "Child priorirty " << child->priority << endl;
                 // Print which child is being processed
                 
                 cout << "Processing child " << (i + 1) << endl; // i + 1 to match child1, child2, etc.
                 child->nodePuzzle->printPuzzle();
-
+                */
                 nodeQueue.push(*child);   // then we push it to the node quue and push the puzzle to the list of states already seen
-                cout << "pushed";           // we have to push the states after we have calculated their priorirty 
-                seen.push_back(*child->nodePuzzle);
+                //cout << "pushed";           // we have to push the states after we have calculated their priorirty 
+                seen.push_back(*child->nodePuzzle);  
+
 
             }
         }
@@ -151,27 +155,28 @@ int Tree::explore(int algo){
         }
 
         currState = new Node(nodeQueue.top());
-
-        cout << "qeueue" << endl; //prints queue just did this for debugging so we can trace back states 
-        while(!nodeQueue.empty()){
-            cout << "size" << nodeQueue.size() << endl;
-            Node temp = nodeQueue.top();
-            temp.nodePuzzle->printPuzzle();
-            nodeQueue.pop();
-        }
-        cout << "edn queue " << endl << endl;
-
-        currState->nodePuzzle->printPuzzle();
+        nodeQueue.pop();
 
         if(currState->nodePuzzle->goalPuzzle() == true){  //chekcs if we are at goal state 
             cout << "congrats we found !" << endl; //finish later
-            return 1;
+            currState->nodePuzzle->printPuzzle();
+
+            return currState->depth;
         } else {
-            cout << "expanding";
+            if(currState->parent == nullptr){
+                cout << endl << "expanding state: " << endl;
+                currState->nodePuzzle->printPuzzle();
+                cout << endl;
+
+            } else {
+                gn = currState->depth;
+                hn = currState->priority - currState->depth;
+                cout << "The best way to expand with g(n) = " << gn << " nd h(n) = " << hn << "..." << endl;
+                currState->nodePuzzle->printPuzzle();
+                cout << "expanding node: "<< endl << endl;
+            }
         }
 
-        cout << " state";
-        currState->nodePuzzle->printPuzzle();
         
         expandNode(algo);  //begin s expanding tree based of algorthm 
         
@@ -194,11 +199,18 @@ bool Tree::checkIfVisited(Puzzle currPuzzle) {  //checks if this was a previousl
             if (!match) break; // Exit outer loop if already found a mismatch
         }
         if (match) {
-            cout << "State seen before" << endl;
+            //cout << "State seen before" << endl;
             return true; // Found a match
         }
     }
-    cout << "State not seen before" << endl;
+    //cout << "State not seen before" << endl;
     return false; // No matches found
 }
 
+int Tree::expandedNodes(){
+    return expanded;
+}
+
+int Tree::longest(){
+    return longestQueue;
+}

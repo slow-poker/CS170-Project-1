@@ -54,7 +54,6 @@ int Puzzle::misplacedTiles(){
             }
         }
     }
-    cout << "misplace " << count << endl;
     return count;
 }
 

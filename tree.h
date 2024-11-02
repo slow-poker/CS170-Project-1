@@ -10,6 +10,8 @@
 
 class Tree{
     private:
+        int expanded;
+        int longestQueue;
         Node* startState;
         Node* currState;
         bool operatorCheck(int move, int zeroRow, int zeroCol);
@@ -27,6 +29,8 @@ class Tree{
         std::priority_queue<Node, std::vector<Node>, lessThanByPriority> nodeQueue; 
         int explore(int);
         bool checkIfVisited(Puzzle currPuzzle);
+        int expandedNodes();
+        int longest();
 
 };
 
