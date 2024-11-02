@@ -160,6 +160,7 @@ int Tree::explore(int algo){
         if(currState->nodePuzzle->goalPuzzle() == true){  //chekcs if we are at goal state 
             cout << "congrats we found !" << endl; //finish later
             currState->nodePuzzle->printPuzzle();
+            printSolution(currState);
 
             return currState->depth;
         } else {
@@ -213,4 +214,24 @@ int Tree::expandedNodes(){
 
 int Tree::longest(){
     return longestQueue;
+}
+
+void Tree::printSolution(Node* state){
+    Node* currPuzzle = state;
+    vector<Node*> path;
+
+    while (currPuzzle != nullptr) {
+        path.push_back(currPuzzle);
+        currPuzzle = currPuzzle->parent;
+    }
+
+    cout << endl << "Here is the solution: " << endl << endl;
+
+    // Print the solution path in the correct order (start to goal)
+    for (auto it = path.rbegin(); it != path.rend(); ++it) {
+        (*it)->nodePuzzle->printPuzzle();
+        if (it + 1 != path.rend()) { // Check if more nodes remain
+            cout << "expand to... " << endl << endl;
+        }
+    }
 }

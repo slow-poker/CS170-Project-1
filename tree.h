@@ -31,7 +31,7 @@ class Tree{
         bool checkIfVisited(Puzzle currPuzzle);
         int expandedNodes();
         int longest();
-
+        void printSolution(Node* state);
 };
 
 #endif
