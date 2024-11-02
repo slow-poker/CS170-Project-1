@@ -4,7 +4,7 @@
 using namespace std;
 
 Tree::Tree(Puzzle *startPuzzle) {
-    startState = new Node{0, startPuzzle, nullptr};
+    startState = new Node{1, startPuzzle, nullptr};
     currState = startState;
     nodeQueue.push(*startState);
 }
