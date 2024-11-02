@@ -12,6 +12,7 @@ class Tree{
     private:
         int expanded;
         int longestQueue;
+        int currentQueue;
         Node* startState;
         Node* currState;
         bool operatorCheck(int move, int zeroRow, int zeroCol);

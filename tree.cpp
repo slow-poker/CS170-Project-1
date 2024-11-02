@@ -18,6 +18,7 @@ Tree::~Tree() {
     currState = nullptr;
     startState = nullptr;
     longestQueue = 1;
+    currentQueue = 1;
 }
 
 void Tree::destroyTree(Node* nodePtr) { //put root ptr in, recursively deletes all children
@@ -40,7 +41,7 @@ void Tree::destroyTree(Node* nodePtr) { //put root ptr in, recursively deletes a
 void Tree::expandNode(int algo) { //find all possible moves from the currState node, create their puzzleNodes and add them to the priority queue
 
     expanded++;
-    longestQueue--;
+    currentQueue--;
     //find where 0 is
     unsigned zeroCol = 0, zeroRow = 0;
     bool earlyEnd = false;
@@ -74,7 +75,9 @@ void Tree::expandNode(int algo) { //find all possible moves from the currState n
                 else if (move == 2) currState->child2 = puzzleChild;
                 else if (move == 3) currState->child3 = puzzleChild;
                 else if (move == 4) currState->child4 = puzzleChild;
-                longestQueue++;
+                currentQueue++;
+                if(longestQueue < currentQueue)
+                longestQueue = currentQueue;
             }
         }
    }
